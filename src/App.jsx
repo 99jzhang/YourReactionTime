@@ -1,14 +1,16 @@
 // <!-- Use "npm run dev" in terminal to see website. It will auto update with changes here -->
 
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import ReactionArea from './Components/ReactionArea'
 import TrialChangeButton from './Components/TrialChangeButton'
 
 function App() {
-  const [color, setColor] = useState("");
+  const [selectedTrials, setSelectedTrials] = useState(1);
+
+  const handleSelection = (trials) => {
+      setSelectedTrials(trials);
+  };
 
   return (
     <>
@@ -23,9 +25,21 @@ function App() {
       </div>
 
       <div class="container" id="trial-change-container">
-        <TrialChangeButton />
-        <TrialChangeButton />
-        <TrialChangeButton />
+        <TrialChangeButton
+            trials={1}
+            isSelected={selectedTrials === 1}
+            onClick={() => handleSelection(1)}
+        />
+        <TrialChangeButton
+            trials={3}
+            isSelected={selectedTrials === 3}
+            onClick={() => handleSelection(3)}
+        />
+        <TrialChangeButton
+            trials={5}
+            isSelected={selectedTrials === 5}
+            onClick={() => handleSelection(5)}
+        />
       </div>
       
       <div class="container" id="reaction-container">

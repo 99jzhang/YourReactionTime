@@ -1,0 +1,16 @@
+.trial-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    font-weight: normal;
+    cursor: pointer;
+    color: black;
+}
+
+.trial-button.selected {
+    background-color: #4caf50; /* Highlight color */
+    color: white;
+    font-weight: bold;
+    border-color: #4caf50;
+}

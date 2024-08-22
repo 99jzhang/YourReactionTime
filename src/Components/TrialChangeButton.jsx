@@ -1,7 +1,15 @@
+import React from "react";
 import "./TrialChangeButton.css";
 
-function TrialChangeButton(props) {
-    return <button class="trial-change">[Insert num trials]</button>;
+function TrialChangeButton({ trials, isSelected, onClick }) {
+    return (
+        <button
+            className={`trial-button ${isSelected ? "selected" : ""}`}
+            onClick={onClick}
+        >
+            {trials} {trials === 1 ? "Trial" : "Trials"}
+        </button>
+    );
 }
 
 export default TrialChangeButton;
