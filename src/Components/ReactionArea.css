@@ -1,6 +1,10 @@
-.reaction-area {
+#reaction-area {
     background-color: blue;
     margin: 10px auto;
     width: 50vw;
     height: 25vh;
+}
+
+#rxn-area-msg {
+    color: black;
 }

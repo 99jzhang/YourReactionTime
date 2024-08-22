@@ -2,5 +2,12 @@
     display: flex; 
     justify-content: center; 
     align-items: center; 
+}
 
+#title-area {
+    display: flex; 
+    justify-content: left;
+    display: block;
+    /* width: 100vw;
+    height: 20vh; */
 }

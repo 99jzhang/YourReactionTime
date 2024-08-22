@@ -1,6 +1,6 @@
 import "./TrialChangeButton.css";
 
-function TrialChangeButton() {
+function TrialChangeButton(props) {
     return <button class="trial-change">[Insert num trials]</button>;
 }
 

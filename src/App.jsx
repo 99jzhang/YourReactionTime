@@ -16,13 +16,13 @@ function App() {
         <h1>YourReactionTime</h1>
         <p>A reaction time tester website with customizable attributes</p>
       </div>
+      
       <div>
         <h3>Directions</h3>
         <p>Click below and wait for the color change</p>
       </div>
 
       <div class="container" id="trial-change-container">
-        <TrialChangeButton />
         <TrialChangeButton />
         <TrialChangeButton />
         <TrialChangeButton />
