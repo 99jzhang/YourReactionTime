@@ -1,70 +1,65 @@
+import React, { useState } from "react";
 import "./ReactionArea.css";
 
 function ReactionArea() {
-    return <div id="reaction-area">
-                <div id="rxn-area-msg">Click here to start</div>
-            </div>;
+    const [waitingForStart, setWaitingForStart] = useState(true);
+    const [waitingForGreen, setWaitingForGreen] = useState(false);
+    const [greenDisplayed, setGreenDisplayed] = useState(false);
+    const [message, setMessage] = useState("Click here to start");
+    const [backgroundColor, setBackgroundColor] = useState("#faf0ca");
+    const [startTime, setStartTime] = useState(null);
+
+    let timer;
+
+    const setGreenColor = () => {
+        setWaitingForGreen(false);
+        setGreenDisplayed(true);
+        setBackgroundColor("#32cd32");
+        setMessage("Click Now!");
+        setStartTime(Date.now());
+    };
+
+    const startGame = () => {
+        setWaitingForStart(false);
+        setWaitingForGreen(true);
+        setBackgroundColor("#c1121f");
+        setMessage("Wait for the Green Color.");
+        const randomNumber = Math.floor(Math.random() * 5000 + 2000);
+        timer = setTimeout(setGreenColor, randomNumber);
+    };
+
+    const displayTooSoon = () => {
+        setWaitingForGreen(false);
+        setWaitingForStart(true);
+        setBackgroundColor("#faf0ca");
+        setMessage("Too Soon. Click to replay.");
+        clearTimeout(timer);
+    };
+
+    const displayReactionTime = (reactionTime) => {
+        setGreenDisplayed(false);
+        setWaitingForStart(true);
+        setBackgroundColor("#faf0ca");
+        setMessage(`${reactionTime} ms. Click to play again.`);
+    };
+
+    const handleClick = () => {
+        if (waitingForStart) {
+            startGame();
+        } else if (waitingForGreen) {
+            displayTooSoon();
+        } else if (greenDisplayed) {
+            const clickTime = Date.now();
+            const reactionTime = clickTime - startTime;
+            displayReactionTime(reactionTime);
+        }
+    };
+
+    return (
+        <div id="reaction-area" style={{ backgroundColor }} onClick={handleClick}>
+            <div id="rxn-area-msg">{message}</div>
+        </div>
+    );
 }
 
 export default ReactionArea;
-
-const reactionArea = document.getElementById("reaction-area");
-const message = document.getElementById("rxn-area-msg");
-
-
-let timer;
-let startTime;
-let waitingForStart = true;
-let waitingForGreen = false;
-let greenDisplayed = false;
-
-function setGreenColor() {
-    waitingForGreen = false;
-    greenDisplayed = true;
-    reactionArea.style.backgroundColor = "#32cd32";
-    message.innerHTML = "Click Now!";
-    message.style.color = "#111";
-    startTime = Date.now();
-}
-
-
-function startGame() {
-    waitingForStart = false;
-    waitingForGreen = true;
-    reactionArea.style.backgroundColor = "#c1121f";
-    message.innerHTML = "Wait for the Green Color.";
-    message.style.color = "white";
-    let randomNumber = Math.floor(Math.random() * 5000 + 2000);
-    timer = setTimeout(setGreenColor, randomNumber);
-}
-
-function displayTooSoon() {
-    waitingForGreen = false;
-    waitingForStart = true;
-    reactionArea.style.backgroundColor = "#faf0ca";
-    message.innerHTML = "Too Soon. Click to replay."
-    message.style.color = "#111";
-    clearTimeout(timer);
-}
-
-function displayReactionTime(reactionTime) {
-    greenDisplayed = false;
-    waitingForStart = true;
-    reactionArea.style.backgroundColor = "#faf0ca";
-    message.innerHTML = "${reactionTime} ms. Click to play again."
-}
-
-
-reactionArea.addEventListener("click", () => {
-    if (waitingForStart) {
-        startGame();
-    }
-    else if (waitingForGreen) {
-        displayTooSoon();
-    }
-    else if (greenDisplayed) {
-        let clickTime = Date.now();
-        let reactionTime = clickTime - startTime;
-        displayReactionTime(reactionTime);
-    }
-})
