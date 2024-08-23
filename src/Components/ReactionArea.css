@@ -1,8 +1,16 @@
 #reaction-area {
+    display: flex;
+    justify-content: center;    /* Centers horizontally */
+    align-items: center;        /* Centers vertically */
+    height: 100%;               /* Make sure the container div has a defined height */
     background-color: blue;
     margin: 10px auto;
     width: 50vw;
     height: 25vh;
+}
+
+#reaction-area:hover {
+    cursor: pointer;
 }
 
 #rxn-area-msg {

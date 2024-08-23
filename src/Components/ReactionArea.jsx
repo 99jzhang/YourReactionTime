@@ -5,6 +5,7 @@ function ReactionArea() {
     const [waitingForStart, setWaitingForStart] = useState(true);
     const [waitingForGreen, setWaitingForGreen] = useState(false);
     const [greenDisplayed, setGreenDisplayed] = useState(false);
+    
     const [message, setMessage] = useState("Click here to start");
     const [backgroundColor, setBackgroundColor] = useState("#faf0ca");
     const [startTime, setStartTime] = useState(null);
