@@ -3,11 +3,9 @@
     /* Centers horizontally */
     justify-content: center;
     /* Centers vertically */ 
-    align-items: center;
-    height: 100%;               
-    background-color: blue;
+    align-items: center;             
     margin: 10px auto;
-    width: 100vw;
+    width: 80vw;
     height: 50vh;
 }
 

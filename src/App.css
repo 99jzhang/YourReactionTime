@@ -4,13 +4,16 @@
     align-items: center; 
 }
 
-#title-area {
+#title-area, #dir {
     display: flex; 
     justify-content: left;
     box-sizing: border-box;
     display: block;
     width: 100%;
-    background-color: gray;
     padding: 10px;
     margin: 0px;
+}
+
+#title-area {
+    background-color: gray;
 }

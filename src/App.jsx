@@ -19,12 +19,12 @@ function App() {
         <p>A reaction time tester website with customizable attributes</p>
       </div>
       
-      <div>
+      <div id="dir">
         <h3>Directions</h3>
         <p>Click below and wait for the color change</p>
       </div>
 
-      <div class="container" id="trial-change-container">
+      <div className="container" id="trial-change-container">
         <TrialChangeButton
             trials={1}
             isSelected={selectedTrials === 1}
@@ -42,7 +42,7 @@ function App() {
         />
       </div>
       
-      <div class="container" id="reaction-container">
+      <div className="container" id="reaction-container">
         <ReactionArea numTrials={selectedTrials}/>
       </div>
     </>
