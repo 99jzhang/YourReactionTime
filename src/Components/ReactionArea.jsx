@@ -75,7 +75,7 @@ function ReactionArea({numTrials}) {
     };
 
     return (
-        <div id="reaction-area" style={{ backgroundColor }} onClick={handleClick}>
+        <div id="reaction-area" style={{ backgroundColor }} onMouseDown={handleClick}>
             <div id="rxn-area-msg">{message}</div>
         </div>
     );
