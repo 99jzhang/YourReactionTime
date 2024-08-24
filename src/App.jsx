@@ -6,10 +6,10 @@ import ReactionArea from './Components/ReactionArea'
 import TrialChangeButton from './Components/TrialChangeButton'
 
 function App() {
-  const [selectedTrials, setSelectedTrials] = useState(1);
+  const selectedTrials = 1;
 
   const handleSelection = (trials) => {
-      setSelectedTrials(trials);
+      selectedTrials = trials;
   };
 
   return (
@@ -43,7 +43,7 @@ function App() {
       </div>
       
       <div class="container" id="reaction-container">
-        <ReactionArea />
+        <ReactionArea numTrials={selectedTrials} />
       </div>
     </>
   )

@@ -13,6 +13,6 @@
     cursor: pointer;
 }
 
-#rxn-area-msg {
+#rxn-area-msg, #avg-msg {
     color: black;
 }
