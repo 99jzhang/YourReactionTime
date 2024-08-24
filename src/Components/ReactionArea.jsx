@@ -10,6 +10,8 @@ function ReactionArea({numTrials}) {
     const [backgroundColor, setBackgroundColor] = useState("#faf0ca");
     const [startTime, setStartTime] = useState(null);
 
+    const [reactionTimes, setReactionTimes] = useState([]);
+
     const timerRef = useRef(null);
 
     const setGreenColor = () => {
@@ -40,7 +42,23 @@ function ReactionArea({numTrials}) {
     const displayReactionTime = (reactionTime) => {
         setGreenDisplayed(false);
         setBackgroundColor("#faf0ca");
-        setMessage(`${reactionTime} ms. Click to play again.`);
+        const newReactionTimes = [...reactionTimes, reactionTime];
+        setReactionTimes(newReactionTimes);
+        const curTrial = newReactionTimes.length;
+
+        if (curTrial >= numTrials && numTrials != 1) {
+            const averageTime = newReactionTimes.reduce((a, b) => a + b) / curTrial;
+            setMessage(`Trial #${curTrial}: ${reactionTime} ms. \n Average Reaction Time over ${curTrial} trials: ${averageTime.toFixed(2)} ms. \n Click to play again.`);
+            setReactionTimes([]);
+        }
+        else if (numTrials == 1) {
+            setMessage(`${reactionTime} ms. Click to play again.`);
+            setReactionTimes([]);
+        }
+        else {
+            setMessage(`Trial #${curTrial}: ${reactionTime} ms. Click to play again.`);
+        }
+        
         setWaitingForStart(true);
     };
 
