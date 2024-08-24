@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./ReactionArea.css";
 
 function ReactionArea() {
-    const [waitingForStart, setWaitingForStart] = useState(true);
-    const [waitingForGreen, setWaitingForGreen] = useState(false);
-    const [greenDisplayed, setGreenDisplayed] = useState(false);
+    let waitingForStart = true;
+    let waitingForGreen = false;
+    let greenDisplayed = false;
     
     const [message, setMessage] = useState("Click here to start");
     const [backgroundColor, setBackgroundColor] = useState("#faf0ca");
@@ -13,16 +13,16 @@ function ReactionArea() {
     let timer;
 
     const setGreenColor = () => {
-        setWaitingForGreen(false);
-        setGreenDisplayed(true);
+        waitingForGreen = false;
+        greenDisplayed = true;
         setBackgroundColor("#32cd32");
         setMessage("Click Now!");
         setStartTime(Date.now());
     };
 
     const startGame = () => {
-        setWaitingForStart(false);
-        setWaitingForGreen(true);
+        waitingForStart = false;
+        waitingForGreen = true;
         setBackgroundColor("#c1121f");
         setMessage("Wait for the Green Color.");
         const randomNumber = Math.floor(Math.random() * 5000 + 2000);
@@ -30,16 +30,16 @@ function ReactionArea() {
     };
 
     const displayTooSoon = () => {
-        setWaitingForGreen(false);
-        setWaitingForStart(true);
+        waitingForGreen = false;
+        waitingForStart = true;
         setBackgroundColor("#faf0ca");
         setMessage("Too Soon. Click to replay.");
         clearTimeout(timer);
     };
 
     const displayReactionTime = (reactionTime) => {
-        setGreenDisplayed(false);
-        setWaitingForStart(true);
+        greenDisplayed = false;
+        waitingForStart = true;
         setBackgroundColor("#faf0ca");
         setMessage(`${reactionTime} ms. Click to play again.`);
     };
