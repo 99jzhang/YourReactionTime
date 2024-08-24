@@ -7,8 +7,11 @@ function ReactionArea() {
     let greenDisplayed = false;
     
     const [message, setMessage] = useState("Click here to start");
+    const [avgMessage, setAvgMessage] = useState("");
     const [backgroundColor, setBackgroundColor] = useState("#faf0ca");
     const [startTime, setStartTime] = useState(null);
+
+    let reactionTimes = [];
 
     let timer;
 
@@ -41,7 +44,13 @@ function ReactionArea() {
         greenDisplayed = false;
         waitingForStart = true;
         setBackgroundColor("#faf0ca");
-        setMessage(`${reactionTime} ms. Click to play again.`);
+        setMessage(`Trial #${curTrial}: ${reactionTime} ms. Click to play again.`);
+        if (reactionTimes.length === numTrials) {
+            const averageTime = reactionTimes.reduce((a, b) => a + b) / numTrials;
+            setAvgMessage(`Average Reaction Time: ${averageTime.toFixed(2)} ms. Click to play again.`);
+            reactionTimes = [];
+        }
+        waitingForStart = true;
     };
 
     const handleClick = () => {
@@ -59,6 +68,7 @@ function ReactionArea() {
     return (
         <div id="reaction-area" style={{ backgroundColor }} onClick={handleClick}>
             <div id="rxn-area-msg">{message}</div>
+            <div id="avg-msg">{avgMessage}</div>
         </div>
     );
 }
