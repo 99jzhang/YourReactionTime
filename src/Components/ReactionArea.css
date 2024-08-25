@@ -5,8 +5,8 @@
     /* Centers vertically */ 
     align-items: center;             
     margin: 10px auto;
-    width: 80vw;
-    height: 50vh;
+    width: 15vw;
+    height: 30vh;
     border-radius: 10px;
 }
 
@@ -17,10 +17,20 @@
 #rxn-area-msg {
     display: flex;
     /* Centers horizontally */
-    justify-content: center;
-    /* Centers vertically */ 
-    align-items: center;
-    height: 100%;
+    justify-content: center; 
+    /* Centers vertically (if needed) */
+    align-items: center; 
+    /* Centers text within the flexbox container */ /* Th*/
+    text-align: center;
+    /* Ensures text wraps correctly in a column layout */
+    flex-direction: column; 
+    /* Allows text to wrap to the next line */
     white-space: pre-line;
+
+
+    height: auto;
+    width: auto;
+    margin: 0px 5px;
     color: black;
+    
 }

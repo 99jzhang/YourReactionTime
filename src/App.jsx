@@ -15,13 +15,13 @@ function App() {
   return (
     <>
       <div id="title-area">
-        <h1>YourReactionTime</h1>
-        <p>A reaction time tester website with customizable attributes</p>
+        <h1 className="header-txt">YourReactionTime</h1>
+        <p className="header-txt">A reaction time tester website with customizable attributes</p>
       </div>
       
       <div id="dir">
-        <h3>Directions</h3>
-        <p>Click below and wait for the color change</p>
+        <h3 className="dir-txt">Directions</h3>
+        <p className="dir-txt">Click below and wait for the color change</p>
       </div>
 
       <div className="container" id="trial-change-container">
