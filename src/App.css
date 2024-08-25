@@ -10,14 +10,13 @@
     text-align: left;
     box-sizing: border-box;
     display: block;
-    width: 100%;
-    border: none;
-    margin: 0 0 20px 0;
-    padding-bottom: 5px;
+    border: 5vh 5vw;
+    margin: 0 auto 2vh auto;
+    padding: 1vh 0 1vh 0;
 }
 
 .header-txt, .dir-txt {
-    margin: 0 10px 0 10px;
+    margin: 0 5vw 0 5vw;
     border: none;
     padding: 0;
 }
@@ -25,4 +24,24 @@
 #title-area {
     align-items: center; 
     background-color: rgb(81, 77, 77);
+    width: 100%;
+}
+
+#dir {
+    background-color: rgb(50, 51, 54);
+    width: 90%;
+}
+
+#trial-color-container {
+    justify-content: space-between;
+    width: 90%;
+    height: 10vh;
+    padding: 0 5vw;
+}
+
+#trial-change-container, #color-change-container {
+    background-color: rgb(50, 51, 54);
+    display: inline-block;
+    text-align: center;
+    width: 50%;
 }

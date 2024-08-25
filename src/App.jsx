@@ -24,23 +24,31 @@ function App() {
         <p className="dir-txt">Click below and wait for the color change</p>
       </div>
 
-      <div className="container" id="trial-change-container">
-        <TrialChangeButton
-            trials={1}
-            isSelected={selectedTrials === 1}
-            onClick={() => handleSelection(1)}
-        />
-        <TrialChangeButton
-            trials={3}
-            isSelected={selectedTrials === 3}
-            onClick={() => handleSelection(3)}
-        />
-        <TrialChangeButton
-            trials={5}
-            isSelected={selectedTrials === 5}
-            onClick={() => handleSelection(5)}
-        />
+      <div className="container" id="trial-color-container">
+        <div className="container" id="trial-change-container">
+          <TrialChangeButton
+              trials={1}
+              isSelected={selectedTrials === 1}
+              onClick={() => handleSelection(1)}
+          />
+          <TrialChangeButton
+              trials={3}
+              isSelected={selectedTrials === 3}
+              onClick={() => handleSelection(3)}
+          />
+          <TrialChangeButton
+              trials={5}
+              isSelected={selectedTrials === 5}
+              onClick={() => handleSelection(5)}
+          />
+        </div>
+
+        <div className="container" id="color-change-container">
+          <div>Future Color Changing Stuff</div>
+        </div>
+
       </div>
+        
 
       <div className="container" id="reaction-container">
         <ReactionArea numTrials={selectedTrials}/>
