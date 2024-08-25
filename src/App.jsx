@@ -20,7 +20,7 @@ function App() {
       </div>
       
       <div id="dir">
-        <h3 className="dir-txt">Directions</h3>
+        <h2 className="dir-txt">Directions</h2>
         <p className="dir-txt">Click below and wait for the color change</p>
       </div>
 
@@ -41,7 +41,7 @@ function App() {
             onClick={() => handleSelection(5)}
         />
       </div>
-      
+
       <div className="container" id="reaction-container">
         <ReactionArea numTrials={selectedTrials}/>
       </div>
