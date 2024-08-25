@@ -11,7 +11,7 @@ function ReactionArea({ numTrials }) {
     const [startTime, setStartTime] = useState(null);
 
     const [reactionTimes, setReactionTimes] = useState([]);
-    const [size, setSize] = useState({ width: "90vw", height: "50vh" }); // Initial size
+    const [size, setSize] = useState({ width: "90vw", height: "50vh" }); 
     const [isResizing, setIsResizing] = useState(false);
 
     const timerRef = useRef(null);
@@ -65,7 +65,9 @@ function ReactionArea({ numTrials }) {
         setWaitingForStart(true);
     };
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        if (e.target.id === "resize-handle") return; // Prevent game start on resize handle click
+
         if (waitingForStart) {
             startGame();
         } else if (waitingForGreen) {
@@ -78,7 +80,10 @@ function ReactionArea({ numTrials }) {
     };
 
     const handleMouseDown = (e) => {
-        setIsResizing(true);
+        if (e.target.id === "resize-handle") {
+            setIsResizing(true);
+            e.stopPropagation(); // Prevent triggering the reaction area click
+        }
     };
 
     const handleMouseMove = (e) => {
