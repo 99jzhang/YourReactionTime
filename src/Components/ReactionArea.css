@@ -1,13 +1,13 @@
 #reaction-area {
     display: flex;
-    /* Centers horizontally */
     justify-content: center;
-    /* Centers vertically */ 
-    align-items: center;             
+    align-items: center;
     margin: 10px auto;
     width: 90vw;
     height: 50vh;
     border-radius: 10px;
+    position: relative; /* Necessary for absolute positioning of the resize handle */
+    user-select: none; /* Prevents text selection during drag */
 }
 
 #reaction-area:hover {
@@ -16,21 +16,24 @@
 
 #rxn-area-msg {
     display: flex;
-    /* Centers horizontally */
-    justify-content: center; 
-    /* Centers vertically (if needed) */
-    align-items: center; 
-    /* Centers text within the flexbox container */ /* Th*/
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    /* Ensures text wraps correctly in a column layout */
     flex-direction: column; 
-    /* Allows text to wrap to the next line */
     white-space: pre-line;
-
-
     height: auto;
     width: auto;
     margin: 0px 5px;
     color: black;
-    
+}
+
+#resize-handle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    cursor: se-resize; /* Cursor icon for resizing */
+    border-radius: 3px;
 }
