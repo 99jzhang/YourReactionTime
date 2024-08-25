@@ -1,18 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./ReactionArea.css";
 
-function ReactionArea({numTrials}) {
+function ReactionArea({ numTrials }) {
     const [waitingForStart, setWaitingForStart] = useState(true);
     const [waitingForGreen, setWaitingForGreen] = useState(false);
     const [greenDisplayed, setGreenDisplayed] = useState(false);
-    
+
     const [message, setMessage] = useState("Click here to start");
     const [backgroundColor, setBackgroundColor] = useState("#faf0ca");
     const [startTime, setStartTime] = useState(null);
 
     const [reactionTimes, setReactionTimes] = useState([]);
+    const [size, setSize] = useState({ width: "90vw", height: "50vh" }); 
+    const [isResizing, setIsResizing] = useState(false);
 
     const timerRef = useRef(null);
+    const reactionAreaRef = useRef(null);
 
     const setGreenColor = () => {
         setWaitingForGreen(false);
@@ -46,23 +49,25 @@ function ReactionArea({numTrials}) {
         setReactionTimes(newReactionTimes);
         const curTrial = newReactionTimes.length;
 
-        if (curTrial >= numTrials && numTrials != 1) {
+        if (curTrial >= numTrials && numTrials !== 1) {
             const averageTime = newReactionTimes.reduce((a, b) => a + b) / curTrial;
-            setMessage(`Trial #${curTrial}: ${reactionTime} ms. \n Average Reaction Time over ${curTrial} trials: ${averageTime.toFixed(2)} ms. \n Click to play again.`);
+            setMessage(
+                `Trial #${curTrial}: ${reactionTime} ms. \n Average Reaction Time over ${curTrial} trials: ${averageTime.toFixed(2)} ms. \n Click to play again.`
+            );
             setReactionTimes([]);
-        }
-        else if (numTrials == 1) {
+        } else if (numTrials === 1) {
             setMessage(`${reactionTime} ms. Click to play again.`);
             setReactionTimes([]);
-        }
-        else {
+        } else {
             setMessage(`Trial #${curTrial}: ${reactionTime} ms. Click to play again.`);
         }
-        
+
         setWaitingForStart(true);
     };
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        if (e.target.id === "resize-handle") return; // Prevent game start on resize handle click
+
         if (waitingForStart) {
             startGame();
         } else if (waitingForGreen) {
@@ -74,9 +79,44 @@ function ReactionArea({numTrials}) {
         }
     };
 
+    const handleMouseDown = (e) => {
+        if (e.target.id === "resize-handle") {
+            setIsResizing(true);
+            e.stopPropagation(); // Prevent triggering the reaction area click
+        }
+    };
+
+    const handleMouseMove = (e) => {
+        if (isResizing) {
+            const newWidth = `${e.clientX - reactionAreaRef.current.getBoundingClientRect().left}px`;
+            const newHeight = `${e.clientY - reactionAreaRef.current.getBoundingClientRect().top}px`;
+            setSize({ width: newWidth, height: newHeight });
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsResizing(false);
+    };
+
+    useEffect(() => {
+        window.addEventListener("mousemove", handleMouseMove);
+        window.addEventListener("mouseup", handleMouseUp);
+
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener("mouseup", handleMouseUp);
+        };
+    }, [isResizing]);
+
     return (
-        <div id="reaction-area" style={{ backgroundColor }} onMouseDown={handleClick}>
+        <div
+            id="reaction-area"
+            ref={reactionAreaRef}
+            style={{ backgroundColor, width: size.width, height: size.height }}
+            onMouseDown={handleClick}
+        >
             <div id="rxn-area-msg">{message}</div>
+            <div id="resize-handle" onMouseDown={handleMouseDown}></div>
         </div>
     );
 }
