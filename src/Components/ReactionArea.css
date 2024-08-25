@@ -7,6 +7,7 @@
     margin: 10px auto;
     width: 80vw;
     height: 50vh;
+    border-radius: 10px;
 }
 
 #reaction-area:hover {

@@ -6,6 +6,7 @@
     font-weight: normal;
     cursor: pointer;
     color: black;
+    border-radius: 5px;
 }
 
 .trial-button.selected {
