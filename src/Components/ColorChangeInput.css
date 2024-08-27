@@ -28,3 +28,8 @@
     bottom: 0px;
     left: 0px;
 }
+
+.chrome-picker input {
+    background-color: rgb(224, 224, 224);
+    color: black;
+}
