@@ -43,7 +43,8 @@
     justify-content: space-around;
     display: inline-block;
     text-align: center;
-    width: 45%;
+    width: auto;
+    margin-right: 1vw;
 }
 
 #color-change-container {
@@ -52,5 +53,6 @@
     align-items: center;
     background-color: rgb(50, 51, 54);
     text-align: center;
-    width: 45%;
+    width: auto;
+    margin-left: 1vw;
 }
