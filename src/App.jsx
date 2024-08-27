@@ -6,7 +6,7 @@ import ColorChangeInput from './Components/ColorChangeInput';
 
 function App() {
     const [selectedTrials, setSelectedTrials] = useState(1);
-    const [colors, setColors] = useState({
+    const [rxnAreaColors, setRxnAreaColors] = useState({
         start: '#faf0ca',
         waiting: '#c1121f',
         green: '#32cd32',
@@ -17,7 +17,7 @@ function App() {
     };
 
     const handleColorChange = (screen, color) => {
-        setColors((prevColors) => ({
+        setRxnAreaColors((prevColors) => ({
             ...prevColors,
             [screen]: color,
         }));
@@ -57,24 +57,24 @@ function App() {
                 <div className="container" id="color-change-container">
                     <ColorChangeInput
                         label="Start Color"
-                        color={colors.start}
+                        color={rxnAreaColors.start}
                         onColorChange={(color) => handleColorChange('start', color)}
                     />
                     <ColorChangeInput
                         label="Waiting Color"
-                        color={colors.waiting}
+                        color={rxnAreaColors.waiting}
                         onColorChange={(color) => handleColorChange('waiting', color)}
                     />
                     <ColorChangeInput
                         label="Reaction Color"
-                        color={colors.green}
+                        color={rxnAreaColors.green}
                         onColorChange={(color) => handleColorChange('green', color)}
                     />
                 </div>
             </div>
 
             <div className="container" id="reaction-container">
-                <ReactionArea numTrials={selectedTrials} colors={colors} />
+                <ReactionArea numTrials={selectedTrials} colors={rxnAreaColors} />
             </div>
         </>
     );

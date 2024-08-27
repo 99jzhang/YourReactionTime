@@ -8,9 +8,11 @@ function ReactionArea({ numTrials, colors }) {
 
     const [message, setMessage] = useState("Click here to start");
     const [backgroundColor, setBackgroundColor] = useState(colors.start);
-    const [startTime, setStartTime] = useState(null);
+    const [textColor, setTextColor] = useState('black');
 
+    const [startTime, setStartTime] = useState(null);
     const [reactionTimes, setReactionTimes] = useState([]);
+
     const [size, setSize] = useState({ width: "90vw", height: "50vh" });
     const [isResizing, setIsResizing] = useState(false);
 
@@ -18,8 +20,49 @@ function ReactionArea({ numTrials, colors }) {
     const reactionAreaRef = useRef(null);
 
     useEffect(() => {
-        setBackgroundColor(colors.start);
-    }, [colors.start]);
+        if (waitingForStart) {
+            setBackgroundColor(colors.start);
+        }
+    }, [colors.start, waitingForStart]);
+
+    useEffect(() => {
+        if (waitingForGreen) {
+            setBackgroundColor(colors.waiting);
+        }
+    }, [colors.waiting, waitingForGreen]);
+
+    useEffect(() => {
+        if (greenDisplayed) {
+            setBackgroundColor(colors.green);
+        }
+    }, [colors.green, greenDisplayed]);
+
+    
+    useEffect(() => {
+        adjustTextColor_basedOn(backgroundColor);
+    }, [backgroundColor]);
+
+    const adjustTextColor_basedOn = (bgColor) => {
+        const brightness = calculateBrightness(bgColor);
+        setTextColor(brightness > 125 ? 'black' : 'white');
+    };
+
+    const calculateBrightness = (hexColor) => {
+        const rgb = hexToRgb(hexColor);
+        return Math.sqrt(
+            0.299 * (rgb.r * rgb.r) +
+            0.587 * (rgb.g * rgb.g) +
+            0.114 * (rgb.b * rgb.b)
+        );
+    };
+
+    const hexToRgb = (hex) => {
+        const bigint = parseInt(hex.slice(1), 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+        return { r, g, b };
+    };
 
     const setGreenColor = () => {
         setWaitingForGreen(false);
@@ -49,6 +92,7 @@ function ReactionArea({ numTrials, colors }) {
     const displayReactionTime = (reactionTime) => {
         setGreenDisplayed(false);
         setBackgroundColor(colors.start);
+        adjustTextColor_basedOn(colors.start);
         const newReactionTimes = [...reactionTimes, reactionTime];
         setReactionTimes(newReactionTimes);
         const curTrial = newReactionTimes.length;
@@ -119,7 +163,7 @@ function ReactionArea({ numTrials, colors }) {
             style={{ backgroundColor, width: size.width, height: size.height }}
             onMouseDown={handleClick}
         >
-            <div id="rxn-area-msg">{message}</div>
+            <div id="rxn-area-msg" style={{ color: textColor }}>{message}</div>
             <div id="resize-handle" onMouseDown={handleMouseDown}></div>
         </div>
     );
