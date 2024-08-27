@@ -33,26 +33,27 @@
 }
 
 #trial-color-container {
-    width: 90%;
-    height: 10vh;
+    width: auto;
+    height: auto;
     padding: 0 5vw;
+    margin: 1vh 0;
+}
+
+#trial-change-container, #color-change-container {
+    background-color: rgb(50, 51, 54); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    height: auto;
 }
 
 #trial-change-container {
-    background-color: rgb(50, 51, 54);
-    justify-content: space-around;
-    display: inline-block;
-    text-align: center;
-    width: auto;
     margin-right: 1vw;
 }
 
 #color-change-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(50, 51, 54);
-    text-align: center;
-    width: auto;
     margin-left: 1vw;
 }
