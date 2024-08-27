@@ -1,25 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ReactionArea.css";
 
-function ReactionArea({ numTrials }) {
+function ReactionArea({ numTrials, colors }) {
     const [waitingForStart, setWaitingForStart] = useState(true);
     const [waitingForGreen, setWaitingForGreen] = useState(false);
     const [greenDisplayed, setGreenDisplayed] = useState(false);
 
     const [message, setMessage] = useState("Click here to start");
-    const [backgroundColor, setBackgroundColor] = useState("#faf0ca");
+    const [backgroundColor, setBackgroundColor] = useState(colors.start);
     const [startTime, setStartTime] = useState(null);
 
     const [reactionTimes, setReactionTimes] = useState([]);
-    const [size, setSize] = useState({ width: "90vw", height: "50vh" }); 
+    const [size, setSize] = useState({ width: "90vw", height: "50vh" });
     const [isResizing, setIsResizing] = useState(false);
 
     const timerRef = useRef(null);
     const reactionAreaRef = useRef(null);
 
+    useEffect(() => {
+        setBackgroundColor(colors.start);
+    }, [colors.start]);
+
     const setGreenColor = () => {
         setWaitingForGreen(false);
-        setBackgroundColor("#32cd32");
+        setBackgroundColor(colors.green);
         setMessage("Click Now!");
         setStartTime(Date.now());
         setGreenDisplayed(true);
@@ -27,8 +31,8 @@ function ReactionArea({ numTrials }) {
 
     const startGame = () => {
         setWaitingForStart(false);
-        setBackgroundColor("#c1121f");
-        setMessage("Wait for the Green Color.");
+        setBackgroundColor(colors.waiting);
+        setMessage("Wait for the new color.");
         const randomNumber = Math.floor(Math.random() * 5000 + 2000);
         timerRef.current = setTimeout(setGreenColor, randomNumber);
         setWaitingForGreen(true);
@@ -36,7 +40,7 @@ function ReactionArea({ numTrials }) {
 
     const displayTooSoon = () => {
         setWaitingForGreen(false);
-        setBackgroundColor("#faf0ca");
+        setBackgroundColor(colors.start);
         setMessage("Too Soon. Click to replay.");
         clearTimeout(timerRef.current);
         setWaitingForStart(true);
@@ -44,7 +48,7 @@ function ReactionArea({ numTrials }) {
 
     const displayReactionTime = (reactionTime) => {
         setGreenDisplayed(false);
-        setBackgroundColor("#faf0ca");
+        setBackgroundColor(colors.start);
         const newReactionTimes = [...reactionTimes, reactionTime];
         setReactionTimes(newReactionTimes);
         const curTrial = newReactionTimes.length;
@@ -66,7 +70,7 @@ function ReactionArea({ numTrials }) {
     };
 
     const handleClick = (e) => {
-        if (e.target.id === "resize-handle") return; // Prevent game start on resize handle click
+        if (e.target.id === "resize-handle") return;
 
         if (waitingForStart) {
             startGame();
@@ -82,7 +86,7 @@ function ReactionArea({ numTrials }) {
     const handleMouseDown = (e) => {
         if (e.target.id === "resize-handle") {
             setIsResizing(true);
-            e.stopPropagation(); // Prevent triggering the reaction area click
+            e.stopPropagation();
         }
     };
 

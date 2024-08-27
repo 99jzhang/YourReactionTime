@@ -1,0 +1,30 @@
+.color-change-input {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.color-change-input label {
+    margin-right: 10px;
+}
+
+.color-swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.popover {
+    position: absolute;
+    z-index: 2;
+}
+
+.cover {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}

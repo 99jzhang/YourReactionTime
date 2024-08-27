@@ -33,15 +33,24 @@
 }
 
 #trial-color-container {
-    justify-content: space-between;
     width: 90%;
     height: 10vh;
     padding: 0 5vw;
 }
 
-#trial-change-container, #color-change-container {
+#trial-change-container {
     background-color: rgb(50, 51, 54);
+    justify-content: space-around;
     display: inline-block;
     text-align: center;
-    width: 50%;
+    width: 45%;
+}
+
+#color-change-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(50, 51, 54);
+    text-align: center;
+    width: 45%;
 }
