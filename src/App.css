@@ -30,6 +30,7 @@
 #dir {
     background-color: rgb(50, 51, 54);
     width: 90%;
+    border-radius: 10px;
 }
 
 #trial-color-container {
@@ -48,6 +49,8 @@
     text-align: center;
     width: auto;
     height: auto;
+    border-radius: 10px;
+    padding: 1%;
 }
 
 #trial-change-container {
