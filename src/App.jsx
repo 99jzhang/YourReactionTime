@@ -8,7 +8,7 @@ function App() {
     const [selectedTrials, setSelectedTrials] = useState(1);
     const [rxnAreaColors, setRxnAreaColors] = useState({
         start: '#faf0ca',
-        waiting: '#c1121f',
+        waiting: '#bc797e',
         green: '#32cd32',
     });
 
@@ -36,6 +36,7 @@ function App() {
                     <li className="dir-txt">Click below and wait for the color change</li>
                     <li className="dir-txt">Choose 1 trial or view average of multiple trials</li>
                     <li className="dir-txt">Change color of each screen</li>
+                    <li className="dir-txt">Click and drag buttom right corner to manipulate reaction area size</li>
                 </ul>
             </div>
 
@@ -77,9 +78,7 @@ function App() {
                 </div>
             </div>
 
-            <div className="container" id="reaction-container">
-                <ReactionArea numTrials={selectedTrials} colors={rxnAreaColors} />
-            </div>
+            <ReactionArea numTrials={selectedTrials} colors={rxnAreaColors} />
         </>
     );
 }

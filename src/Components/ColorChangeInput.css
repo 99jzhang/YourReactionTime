@@ -1,7 +1,10 @@
 .color-change-input {
-    margin: 10px;
+    background: rgb(66, 67, 70);
+    margin: 1%;
     display: flex;
     align-items: center;
+    padding: 2%;
+    border-radius: 10px;
 }
 
 .color-change-input label {

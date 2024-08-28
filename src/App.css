@@ -42,10 +42,9 @@
 
 #trial-change-container, #color-change-container {
     background-color: rgb(50, 51, 54); 
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+        align-items: center;
     text-align: center;
     width: auto;
     height: auto;
@@ -59,4 +58,5 @@
 
 #color-change-container {
     margin-left: 1vw;
+    min-width: 40%;
 }

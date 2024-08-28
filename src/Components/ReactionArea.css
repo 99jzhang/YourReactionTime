@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px auto;
+    margin: auto;
+    margin-top: 2%;
     width: 90vw;
     height: 50vh;
     border-radius: 10px;
