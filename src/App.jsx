@@ -32,7 +32,11 @@ function App() {
 
             <div id="dir">
                 <h2 className="dir-txt">Directions</h2>
-                <p className="dir-txt">Click below and wait for the color change</p>
+                <ul>    
+                    <li className="dir-txt">Click below and wait for the color change</li>
+                    <li className="dir-txt">Choose 1 trial or view average of multiple trials</li>
+                    <li className="dir-txt">Change color of each screen</li>
+                </ul>
             </div>
 
             <div className="container" id="trial-color-container">
