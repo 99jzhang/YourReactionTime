@@ -76,9 +76,13 @@ function App() {
                         onColorChange={(color) => handleColorChange('green', color)}
                     />
                 </div>
-            </div>
+            </div> 
 
-            <ReactionArea numTrials={selectedTrials} colors={rxnAreaColors} />
+            <div className="container" id="reaction-area-container">
+                <ReactionArea numTrials={selectedTrials} colors={rxnAreaColors} />
+            </div>
+            
+            
         </>
     );
 }

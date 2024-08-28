@@ -163,6 +163,7 @@ function ReactionArea({ numTrials, colors }) {
 
     return (
         <div
+            className="container"
             id="reaction-area"
             ref={reactionAreaRef}
             style={{ backgroundColor, width: size.width, height: size.height }}
