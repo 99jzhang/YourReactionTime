@@ -30,18 +30,33 @@
 #dir {
     background-color: rgb(50, 51, 54);
     width: 90%;
+    border-radius: 10px;
 }
 
 #trial-color-container {
-    justify-content: space-between;
-    width: 90%;
-    height: 10vh;
+    width: auto;
+    height: auto;
     padding: 0 5vw;
+    margin: 1vh 0;
 }
 
 #trial-change-container, #color-change-container {
-    background-color: rgb(50, 51, 54);
-    display: inline-block;
+    background-color: rgb(50, 51, 54); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
-    width: 50%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+#trial-change-container {
+    margin-right: 1vw;
+}
+
+#color-change-container {
+    margin-left: 1vw;
 }
