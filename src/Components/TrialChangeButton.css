@@ -4,9 +4,12 @@
     border: 2px solid #aeb1b6;
     background-color: #aeb1b6;
     font-weight: normal;
-    cursor: pointer;
     color: black;
     border-radius: 5px;
+}
+
+.trial-button:hover {
+    cursor: pointer;
 }
 
 .trial-button.selected {

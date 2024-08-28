@@ -130,6 +130,7 @@ function ReactionArea({ numTrials, colors }) {
     const handleMouseDown = (e) => {
         if (e.target.id === "resize-handle") {
             setIsResizing(true);
+            document.body.style.cursor = "se-resize";
             e.stopPropagation();
         }
     };
@@ -143,7 +144,11 @@ function ReactionArea({ numTrials, colors }) {
     };
 
     const handleMouseUp = () => {
-        setIsResizing(false);
+        if (isResizing) {
+            setIsResizing(false);
+            document.body.style.cursor = "default";
+        }
+        
     };
 
     useEffect(() => {

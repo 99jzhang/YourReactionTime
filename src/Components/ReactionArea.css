@@ -11,10 +11,6 @@
     user-select: none; /* Prevents text selection during drag */
 }
 
-#reaction-area:hover {
-    cursor: pointer;
-}
-
 #rxn-area-msg {
     display: flex;
     justify-content: center;
@@ -40,4 +36,8 @@
     border-bottom: 20px solid #b0b0b0;
     border-radius: 1;
     clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+#reaction-area:hover {
+    cursor: pointer;
 }
