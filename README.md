@@ -1,8 +1,11 @@
-# React + Vite
+# YourReactionTime
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a reaction time tester website with customizable attributes.
 
-Currently, two official plugins are available:
+Currently, you can change the **color** of screens in the reaction area and the rectangular **size** of the reaction area.
+You can also track your average reaction time over 3-5 trials.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Different colors may affect reaction time due to color sensitivty or being more noticeable
+Different sizes may affect reaction time for peripheral vision reflex vs. trained reflex.
+
+I'm also into FPS games in which reaction time is key for good performance, so I thought it'd be cool to make my own reaction time tester website.
