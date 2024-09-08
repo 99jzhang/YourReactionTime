@@ -1,7 +1,14 @@
 import React from "react";
 import "./TrialChangeButton.css";
 
-function TrialChangeButton({ trials, isSelected, onClick }) {
+// Define the types for the props
+interface TrialChangeButtonProps {
+    trials: number;
+    isSelected: boolean;
+    onClick: () => void;
+}
+
+function TrialChangeButton({ trials, isSelected, onClick }: TrialChangeButtonProps) {
     return (
         <button
             className={`trial-button ${isSelected ? "selected" : ""}`}

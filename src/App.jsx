@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import ReactionArea from './Components/ReactionArea';
 import TrialChangeButton from './Components/TrialChangeButton';
@@ -36,7 +36,7 @@ function App() {
                     <li className="dir-txt">Click below and wait for the color change</li>
                     <li className="dir-txt">Choose 1 trial or view average of multiple trials</li>
                     <li className="dir-txt">Change color of each screen</li>
-                    <li className="dir-txt">Click and drag buttom right corner to manipulate reaction area size</li>
+                    <li className="dir-txt">Click and drag button right corner to manipulate reaction area size</li>
                 </ul>
             </div>
 
