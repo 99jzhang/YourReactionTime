@@ -5,6 +5,7 @@ import TrialChangeButton from './Components/TrialChangeButton';
 import ColorChangeInput from './Components/ColorChangeInput';
 
 import axios from "axios";
+import OAuthButton from './Components/OAuthButton';
 
 function App() {
     const fetchAPI = async () => {
@@ -38,10 +39,10 @@ function App() {
     return (
         <>
             <div id="title-area">
-                <h1 className="header-txt">YourReactionTime</h1>
+                <h1 className="header-txt">YourReactionTime {array}</h1>
                 <p className="header-txt">A reaction time tester website with customizable attributes</p>
             </div>
-
+            <OAuthButton/>
             <div id="dir">
                 <h2 className="dir-txt">Directions</h2>
                 <ul>    
