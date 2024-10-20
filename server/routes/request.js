@@ -4,7 +4,8 @@ const router = express.Router();
 const dotenv = require("dotenv");
 dotenv.config();
 const {OAuth2Client} = require("google-auth-library");
-const URL = 'http://localhost:3000/oauth';
+const URL = "http://127.0.0.1:3000/oauth";
+
 
 router.post('/', async function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "http://localhost:5173");
@@ -20,7 +21,7 @@ router.post('/', async function(req, res, next) {
 
     const authorizeURL = oAuth2Client.generateAuthUrl({
         access_type:'offline', // offline for testing
-        scope: 'https://www.googleapis.com/auth/userinfo.profile  openid',
+        scope: 'https://www.googleapis.com/auth/userinfo.profile openid',
         prompt: 'consent'
     })
     res.json({url: authorizeURL})
